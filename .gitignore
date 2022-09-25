@@ -1,4 +1,10 @@
+### Documents
 *.pdf
+*.doc
+*.docx
+
+### Other
+*.tmp
 
 ### Java template
 # Compiled class file
@@ -101,7 +107,7 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 ### Gradle template
-.gradle
+**/.gradle/**
 **/build/
 !src/**/build/
 
