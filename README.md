@@ -1,0 +1,1 @@
+All solution of tasks located in relevant branches. 
