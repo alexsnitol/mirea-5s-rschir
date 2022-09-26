@@ -12,7 +12,7 @@ services:
       - ./sql:/docker-entrypoint-initdb.d
   
   php:
-    build: ./php/dockerfile
+    build: php/dockerfile
     container_name: php-apache
     volumes:
       - ./php/src:/var/www/html/
