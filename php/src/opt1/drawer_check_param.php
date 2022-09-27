@@ -1,6 +1,7 @@
 <?php
 
 if (!array_key_exists("num", $_GET)) {
-    echo "Enter number of figure from 1 to 4 as GET parameter with name 'num'.";
+    echo "Enter code of figure as GET parameter with name 'num', for example 5448080.";
     exit();
 }
+

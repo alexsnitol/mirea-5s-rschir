@@ -6,36 +6,54 @@
 
 include 'drawer_check_param.php';
 
-$number_of_figure = $_GET["num"];
+$code = $_GET["num"]; // 001122222222223333333333
 
-if ($number_of_figure == 1) {
-    echo "
-    <svg width='100' height='100'>
-        <circle cx='50' cy='50' r='40' stroke='green' stroke-width='4' fill='yellow' />
-    </svg>
-    ";
-} elseif ($number_of_figure == 2) {
-    echo "
-    <svg width='400' height='100'>
-        <rect width='400' height='100' style='fill:rgb(0,0,255);stroke-width:10;stroke:rgb(0,0,0)' />
-    </svg>
-    ";
-} elseif ($number_of_figure == 3) {
-    echo "
-    <svg width='400' height='180'>
-      <rect x='50' y='20' rx='20' ry='20' width='150' height='150'
-      style='fill:red;stroke:black;stroke-width:5;opacity:0.5' />
-    </svg>    
-    ";
-} elseif ($number_of_figure == 4) {
-    echo "
-    <svg width='300' height='200'>
-      <polygon points='100,10 40,198 190,78 10,78 160,198'
-      style='fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;' />
-    </svg>
-    ";
+// 0 - number of figure
+// 1 - number of color
+// 2 - width
+// 3 - height
+
+// 01 01 0011001000 0110010000 -> 5448080
+
+$number_of_figure = ($code & 12582912) >> 22;
+$number_of_color =  ($code & 3145728) >> 20;
+$width =            ($code & 1047552) >> 10;
+$height =           ($code & 1023);
+
+echo $number_of_figure.'-'.$number_of_color.'-'.$width.'-'.$height."</br>";
+
+if ($number_of_color == 0) {
+    $color = 'black';
+} elseif ($number_of_color == 1) {
+    $color = 'blue';
+} elseif ($number_of_color == 2) {
+    $color = 'green';
+} elseif ($number_of_color == 3) {
+    $color = 'red';
 } else {
-    echo "'num' most be from 1 to 4";
+    $color = 'black';
+}
+
+if ($number_of_figure == 0) {?>
+
+    <svg width='<?php echo $width ?>' height='<?php echo $height ?>'>
+        <circle cx='50' cy='50' r='<?php echo $width ?>' fill='<?php echo $color ?>' />
+    </svg>
+
+<?php } elseif ($number_of_figure == 1) {?>
+
+    <svg width='<?php echo $width ?>' height='<?php echo $height ?>'>
+        <rect width='<?php echo $width ?>' height='<?php echo $height ?>' style='fill:<?php echo $color ?>;' />
+    </svg>
+
+<?php } elseif ($number_of_figure == 2) {?>
+
+    <svg width='<?php echo $width ?>' height='<?php echo $height ?>'>
+      <rect x='50' y='20' rx='20' ry='20' width='<?php echo $width ?>' height='<?php echo $height ?>' style='fill:<?php echo $color ?>;' />
+    </svg>
+
+<?php } else {
+    echo "'num' most be from 0 to 2";
 }
 
 ?>
