@@ -1,9 +1,14 @@
+<?php
+
+require '../auth_checker.php';
+
+?>
+
 <!DOCTYPE html>
 <html>
 <body>
 
 <?php
-
 include 'drawer_check_param.php';
 
 $code = $_GET["num"]; // 001122222222223333333333

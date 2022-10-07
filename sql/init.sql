@@ -8,8 +8,12 @@ CREATE TABLE IF NOT EXISTS users (
   ID INT(11) NOT NULL AUTO_INCREMENT,
   name VARCHAR(20) NOT NULL,
   surname VARCHAR(40) NOT NULL,
+  password VARCHAR(40) NOT NULL DEFAULT(''),
   PRIMARY KEY (ID)
 );
+
+INSERT INTO users (name, surname, password)
+VALUES ('admin', 'admin', 'admin');
 
 INSERT INTO users (name, surname)
 SELECT * FROM (SELECT 'Alex', 'Rover') AS tmp

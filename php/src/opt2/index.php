@@ -1,3 +1,9 @@
+<?php
+
+require '../auth_checker.php';
+
+?>
+
 <!DOCTYPE html>
 <html>
 <body>
